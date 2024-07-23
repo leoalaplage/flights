@@ -11,55 +11,79 @@
             color: #00FF00;
             font-size: 16px;
             line-height: 1.5;
+            margin: 0;
+            padding: 0;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
         h1 {
             text-align: center;
             font-size: 40px;
             color: #FFFF00;
-            text-shadow: 2px 2px #FF00FF;
+            text-shadow: 3px 3px #FF00FF;
+            margin-bottom: 30px;
         }
         #flight-info {
             border: 2px solid #00FF00;
-            padding: 10px;
+            padding: 20px;
             margin-top: 20px;
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.7);
+            
         }
         #back-button {
             display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
+            margin: 30px auto;
+            padding: 15px 30px;
             background-color: #000000;
             color: #00FF00;
-            border: 1px solid #00FF00;
+            border: 2px solid #00FF00;
             cursor: pointer;
             font-family: "Courier New", Courier, monospace;
-            font-size: 16px;
+            font-size: 18px;
+            transition: all 0.3s ease;
         }
         #back-button:hover {
-            background-color: #003300;
+             background-color: #003300;
+            
         }
         .flight-day {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: rgba(0, 255, 0, 0.1);
+            
         }
         .flight-day h2 {
             color: #FF00FF;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 0;
             font-size: 16px;
+            
         }
         .flight {
             margin-left: 20px;
+            padding: 5px 0;
         }
+        .check-times {
+            font-style: italic;
+            color: #FFFF00;
+        }
+        #l8trust-link {
+    text-decoration: none;
+    color: inherit;
+    transition: text-shadow 0.3s ease;
+}
+
+#l8trust-link:hover {
+    text-shadow: 0 0 10px #FFFF00;
+}
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>L8TRUST - Flights</h1>
+        <h1><a href="https://leoalaplage.github.io/l8trust/" id="l8trust-link">L8TRUST</a> - Flights</h1>
         <div id="flight-info">
             <p>Flight information will be displayed here.</p>
         </div>
@@ -72,137 +96,163 @@
         }
         
         const flights = [
-    {
-        date: 'July 30, 2024',
-        totalFlightTime: '7h50',
-        flights: [
-            { time: '04:15-06:10 UTC', route: 'FR165 MARSEILLE - VIENNA' },
-            { time: '06:50-08:50 UTC', route: 'FR164 VIENNA - MARSEILLE' },
-            { time: '09:15-11:10 UTC', route: 'FR7776 MARSEILLE - MALAGA' },
-            { time: '11:45-13:45 UTC', route: 'FR7775 MALAGA - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'July 31, 2024',
-        totalFlightTime: '6h55',
-        flights: [
-            { time: '03:50-05:45 UTC', route: 'FR4063 MARSEILLE - CATANIA' },
-            { time: '06:15-08:20 UTC', route: 'FR4064 CATANIA - MARSEILLE' },
-            { time: '08:45-10:15 UTC', route: 'FR6476 MARSEILLE - NANTES' },
-            { time: '10:40-12:05 UTC', route: 'FR6477 NANTES - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 1, 2024',
-        totalFlightTime: '4h40',
-        flights: [
-            { time: '03:50-06:05 UTC', route: 'FR5413 MARSEILLE - KRAKOW' },
-            { time: '06:30-08:55 UTC', route: 'FR5412 KRAKOW - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 2, 2024',
-        totalFlightTime: '5h10',
-        flights: [
-            { time: '14:20-15:25 UTC', route: 'FR7442 MARSEILLE - MINORCA' },
-            { time: '16:00-17:05 UTC', route: 'FR7443 MINORCA - MARSEILLE' },
-            { time: '18:20-19:50 UTC', route: 'FR7277 MARSEILLE - LUXEMBOURG' },
-            { time: '20:25-21:55 UTC', route: 'FR7278 LUXEMBOURG - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 6, 2024',
-        totalFlightTime: '5h30',
-        flights: [
-            { time: '14:40-17:30 UTC', route: 'FR6474 MARSEILLE - OUARZAZATE' },
-            { time: '17:55-20:35 UTC', route: 'FR6475 OUARZAZATE - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 8, 2024',
-        totalFlightTime: '4h45',
-        flights: [
-            { time: '14:50-17:15 UTC', route: 'FR7251 MARSEILLE - RABAT' },
-            { time: '17:45-20:05 UTC', route: 'FR7250 RABAT - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 15, 2024',
-        totalFlightTime: '6h30',
-        flights: [
-            { time: '13:55-15:30 UTC', route: 'FR3482 BGY - BRINDISI' },
-            { time: '15:55-17:30 UTC', route: 'FR3483 BRINDISI - BGY' },
-            { time: '17:55-19:35 UTC', route: 'FR5831 BGY - BORDEAUX' },
-            { time: '20:00-21:40 UTC', route: 'FR5832 BORDEAUX - BGY' }
-        ]
-    },
-    {
-        date: 'August 16, 2024',
-        totalFlightTime: '5h30',
-        flights: [
-            { time: '16:20-19:00 UTC', route: 'FR7976 BGY - KOS' },
-            { time: '19:25-22:15 UTC', route: 'FR7977 KOS - BGY' }
-        ]
-    },
-    {
-        date: 'August 17, 2024',
-        totalFlightTime: '8h20',
-        flights: [
-            { time: '12:35-14:45 UTC', route: 'FR3772 BGY - BUCHAREST' },
-            { time: '15:10-17:30 UTC', route: 'FR3773 BUCHAREST - BGY' },
-            { time: '17:55-19:45 UTC', route: 'FR8421 BGY - TIRANA' },
-            { time: '20:20-22:20 UTC', route: 'FR8422 TIRANA - BGY' }
-        ]
-    },
-    {
-        date: 'August 18, 2024',
-        totalFlightTime: '6h25',
-        flights: [
-            { time: '14:45-16:20 UTC', route: 'FR4132 BGY - BARI' },
-            { time: '16:45-18:15 UTC', route: 'FR4131 BARI - BGY' },
-            { time: '19:20-20:55 UTC', route: 'FR2428 BGY - SARAJEVO' },
-            { time: '21:20-23:05 UTC', route: 'FR2429 SARAJEVO - BGY' }
-        ]
-    },
-    {
-        date: 'August 24, 2024',
-        totalFlightTime: '6h20',
-        flights: [
-            { time: '14:10-15:40 UTC', route: 'FR6772 MARSEILLE - NANTES' },
-            { time: '16:10-17:35 UTC', route: 'FR6773 NANTES - MARSEILLE' },
-            { time: '18:00-19:40 UTC', route: 'FR6785 MARSEILLE - PALERMO' },
-            { time: '20:10-21:55 UTC', route: 'FR6786 PALERMO - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 26, 2024',
-        totalFlightTime: '6h55',
-        flights: [
-            { time: '04:45-06:40 UTC', route: 'FR7796 MARSEILLE - MALTA' },
-            { time: '07:05-09:10 UTC', route: 'FR7795 MALTA - MARSEILLE' },
-            { time: '09:35-11:05 UTC', route: 'FR6476 MARSEILLE - NANTES' },
-            { time: '11:30-12:55 UTC', route: 'FR6477 NANTES - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 27, 2024',
-        totalFlightTime: '5h30',
-        flights: [
-            { time: '14:40-17:30 UTC', route: 'FR6474 MARSEILLE - OUARZAZATE' },
-            { time: '17:55-20:35 UTC', route: 'FR6475 OUARZAZATE - MARSEILLE' }
-        ]
-    },
-    {
-        date: 'August 28, 2024',
-        totalFlightTime: '4h35',
-        flights: [
-            { time: '14:00-16:20 UTC', route: 'FR2078 MARSEILLE - LISBON' },
-            { time: '16:45-19:00 UTC', route: 'FR2077 LISBON - MARSEILLE' }
-        ]
-    }
-    // Add more flights here
-];
-
+            {
+                date: 'July 30, 2024',
+                totalFlightTime: '7h50',
+                checkIn: '03:30 UTC (05:30 UTC+2)',
+                checkOut: '14:15 UTC (16:15 UTC+2)',
+                flights: [
+                    { time: '04:15-06:10 UTC', route: 'FR165 MARSEILLE - VIENNA' },
+                    { time: '06:50-08:50 UTC', route: 'FR164 VIENNA - MARSEILLE' },
+                    { time: '09:15-11:10 UTC', route: 'FR7776 MARSEILLE - MALAGA' },
+                    { time: '11:45-13:45 UTC', route: 'FR7775 MALAGA - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'July 31, 2024',
+                totalFlightTime: '6h55',
+                checkIn: '03:05 UTC (05:05 UTC+2)',
+                checkOut: '12:35 UTC (14:35 UTC+2)',
+                flights: [
+                    { time: '03:50-05:45 UTC', route: 'FR4063 MARSEILLE - CATANIA' },
+                    { time: '06:15-08:20 UTC', route: 'FR4064 CATANIA - MARSEILLE' },
+                    { time: '08:45-10:15 UTC', route: 'FR6476 MARSEILLE - NANTES' },
+                    { time: '10:40-12:05 UTC', route: 'FR6477 NANTES - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 1, 2024',
+                totalFlightTime: '4h40',
+                checkIn: '03:05 UTC (05:05 UTC+2)',
+                checkOut: '09:25 UTC (11:25 UTC+2)',
+                flights: [
+                    { time: '03:50-06:05 UTC', route: 'FR5413 MARSEILLE - KRAKOW' },
+                    { time: '06:30-08:55 UTC', route: 'FR5412 KRAKOW - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 2, 2024',
+                totalFlightTime: '5h10',
+                checkIn: '13:35 UTC (15:35 UTC+2)',
+                checkOut: '22:25 UTC (00:25 UTC+2)',
+                flights: [
+                    { time: '14:20-15:25 UTC', route: 'FR7442 MARSEILLE - MINORCA' },
+                    { time: '16:00-17:05 UTC', route: 'FR7443 MINORCA - MARSEILLE' },
+                    { time: '18:20-19:50 UTC', route: 'FR7277 MARSEILLE - LUXEMBOURG' },
+                    { time: '20:25-21:55 UTC', route: 'FR7278 LUXEMBOURG - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 6, 2024',
+                totalFlightTime: '5h30',
+                checkIn: '13:55 UTC (15:55 UTC+2)',
+                checkOut: '21:05 UTC (23:05 UTC+2)',
+                flights: [
+                    { time: '14:40-17:30 UTC', route: 'FR6474 MARSEILLE - OUARZAZATE' },
+                    { time: '17:55-20:35 UTC', route: 'FR6475 OUARZAZATE - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 8, 2024',
+                totalFlightTime: '4h45',
+                checkIn: '14:05 UTC (16:05 UTC+2)',
+                checkOut: '20:35 UTC (22:35 UTC+2)',
+                flights: [
+                    { time: '14:50-17:15 UTC', route: 'FR7251 MARSEILLE - RABAT' },
+                    { time: '17:45-20:05 UTC', route: 'FR7250 RABAT - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 15, 2024',
+                totalFlightTime: '6h30',
+                checkIn: '13:10 UTC (15:10 UTC+2)',
+                checkOut: '22:10 UTC (00:10 UTC+2)',
+                flights: [
+                    { time: '13:55-15:30 UTC', route: 'FR3482 BGY - BRINDISI' },
+                    { time: '15:55-17:30 UTC', route: 'FR3483 BRINDISI - BGY' },
+                    { time: '17:55-19:35 UTC', route: 'FR5831 BGY - BORDEAUX' },
+                    { time: '20:00-21:40 UTC', route: 'FR5832 BORDEAUX - BGY' }
+                ]
+            },
+            {
+                date: 'August 16, 2024',
+                totalFlightTime: '5h30',
+                checkIn: '15:35 UTC (17:35 UTC+2)',
+                checkOut: '22:45 UTC (00:45 UTC+2)',
+                flights: [
+                    { time: '16:20-19:00 UTC', route: 'FR7976 BGY - KOS' },
+                    { time: '19:25-22:15 UTC', route: 'FR7977 KOS - BGY' }
+                ]
+            },
+            {
+                date: 'August 17, 2024',
+                totalFlightTime: '8h20',
+                checkIn: '11:50 UTC (13:50 UTC+2)',
+                checkOut: '22:50 UTC (00:50 UTC+2)',
+                flights: [
+                    { time: '12:35-14:45 UTC', route: 'FR3772 BGY - BUCHAREST' },
+                    { time: '15:10-17:30 UTC', route: 'FR3773 BUCHAREST - BGY' },
+                    { time: '17:55-19:45 UTC', route: 'FR8421 BGY - TIRANA' },
+                    { time: '20:20-22:20 UTC', route: 'FR8422 TIRANA - BGY' }
+                ]
+            },
+            {
+                date: 'August 18, 2024',
+                totalFlightTime: '6h25',
+                checkIn: '14:00 UTC (16:00 UTC+2)',
+                checkOut: '23:35 UTC (01:35 UTC+2)',
+                flights: [
+                    { time: '14:45-16:20 UTC', route: 'FR4132 BGY - BARI' },
+                    { time: '16:45-18:15 UTC', route: 'FR4131 BARI - BGY' },
+                    { time: '19:20-20:55 UTC', route: 'FR2428 BGY - SARAJEVO' },
+                    { time: '21:20-23:05 UTC', route: 'FR2429 SARAJEVO - BGY' }
+                ]
+            },
+            {
+                date: 'August 24, 2024',
+                totalFlightTime: '6h20',
+                checkIn: '13:25 UTC (15:25 UTC+2)',
+                checkOut: '22:25 UTC (00:25 UTC+2)',
+                flights: [
+                    { time: '14:10-15:40 UTC', route: 'FR6772 MARSEILLE - NANTES' },
+                    { time: '16:10-17:35 UTC', route: 'FR6773 NANTES - MARSEILLE' },
+                    { time: '18:00-19:40 UTC', route: 'FR6785 MARSEILLE - PALERMO' },
+                    { time: '20:10-21:55 UTC', route: 'FR6786 PALERMO - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 26, 2024',
+                totalFlightTime: '6h55',
+                checkIn: '04:00 UTC (06:00 UTC+2)',
+                checkOut: '13:25 UTC (15:25 UTC+2)',
+                flights: [
+                    { time: '04:45-06:40 UTC', route: 'FR7796 MARSEILLE - MALTA' },
+                    { time: '07:05-09:10 UTC', route: 'FR7795 MALTA - MARSEILLE' },
+                    { time: '09:35-11:05 UTC', route: 'FR6476 MARSEILLE - NANTES' },
+                    { time: '11:30-12:55 UTC', route: 'FR6477 NANTES - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 27, 2024',
+                totalFlightTime: '5h30',
+                checkIn: '13:55 UTC (15:55 UTC+2)',
+                checkOut: '21:05 UTC (23:05 UTC+2)',
+                flights: [
+                    { time: '14:40-17:30 UTC', route: 'FR6474 MARSEILLE - OUARZAZATE' },
+                    { time: '17:55-20:35 UTC', route: 'FR6475 OUARZAZATE - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 28, 2024',
+                totalFlightTime: '4h35',
+                checkIn: '13:15 UTC (15:15 UTC+2)',
+                checkOut: '19:30 UTC (21:30 UTC+2)',
+                flights: [
+                    { time: '14:00-16:20 UTC', route: 'FR2078 MARSEILLE - LISBON' },
+                    { time: '16:45-19:00 UTC', route: 'FR2077 LISBON - MARSEILLE' }
+                ]
+            }
+        ];
 
         const flightInfoDiv = document.getElementById('flight-info');
         flightInfoDiv.innerHTML = '';
@@ -213,6 +263,11 @@
             const dayTitle = document.createElement('h2');
             dayTitle.textContent = `${day.date} - Total flight time: ${day.totalFlightTime}`;
             dayDiv.appendChild(dayTitle);
+
+            const checkTimes = document.createElement('p');
+            checkTimes.className = 'check-times';
+            checkTimes.textContent = `Check-in: ${day.checkIn} | Check-out: ${day.checkOut}`;
+            dayDiv.appendChild(checkTimes);
 
             day.flights.forEach(flight => {
                 const flightDiv = document.createElement('div');
