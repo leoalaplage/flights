@@ -43,6 +43,18 @@
         #back-button:hover {
             background-color: #003300;
         }
+        .flight-day {
+            margin-bottom: 20px;
+        }
+        .flight-day h2 {
+            color: #FF00FF;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .flight {
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +71,92 @@
             window.location.href = 'https://leoalaplage.github.io/l8trust/';
         }
         
-        // Add any flight-related JavaScript functions here
+        const flights = [
+            {
+                date: 'July 30, 2024',
+                totalFlightTime: '7h50',
+                flights: [
+                    { time: '04:15-06:10 UTC', route: 'FR165 MARSEILLE - VIENNA' },
+                    { time: '06:50-08:50 UTC', route: 'FR164 VIENNA - MARSEILLE' },
+                    { time: '09:15-11:10 UTC', route: 'FR7776 MARSEILLE - MALAGA' },
+                    { time: '11:45-13:45 UTC', route: 'FR7775 MALAGA - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'July 31, 2024',
+                totalFlightTime: '6h55',
+                flights: [
+                    { time: '03:50-05:45 UTC', route: 'FR4063 MARSEILLE - CATANIA' },
+                    { time: '06:15-08:20 UTC', route: 'FR4064 CATANIA - MARSEILLE' },
+                    { time: '08:45-10:15 UTC', route: 'FR6476 MARSEILLE - NANTES' },
+                    { time: '10:40-12:05 UTC', route: 'FR6477 NANTES - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 1, 2024',
+                totalFlightTime: '4h40',
+                flights: [
+                    { time: '03:50-06:05 UTC', route: 'FR5413 MARSEILLE - KRAKOW' },
+                    { time: '06:30-08:55 UTC', route: 'FR5412 KRAKOW - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 2, 2024',
+                totalFlightTime: '5h10',
+                flights: [
+                    { time: '14:20-15:25 UTC', route: 'FR7442 MARSEILLE - MINORCA' },
+                    { time: '16:00-17:05 UTC', route: 'FR7443 MINORCA - MARSEILLE' },
+                    { time: '18:20-19:50 UTC', route: 'FR7277 MARSEILLE - LUXEMBOURG' },
+                    { time: '20:25-21:55 UTC', route: 'FR7278 LUXEMBOURG - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 6, 2024',
+                totalFlightTime: '5h30',
+                flights: [
+                    { time: '14:40-17:30 UTC', route: 'FR6474 MARSEILLE - OUARZAZATE' },
+                    { time: '17:55-20:35 UTC', route: 'FR6475 OUARZAZATE - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 8, 2024',
+                totalFlightTime: '4h45',
+                flights: [
+                    { time: '14:50-17:15 UTC', route: 'FR7251 MARSEILLE - RABAT' },
+                    { time: '17:45-20:05 UTC', route: 'FR7250 RABAT - MARSEILLE' }
+                ]
+            },
+            {
+                date: 'August 15, 2024',
+                totalFlightTime: '6h30',
+                flights: [
+                    { time: '13:55-15:30 UTC', route: 'FR3482 BGY - BRINDISI' },
+                    { time: '15:55-17:30 UTC', route: 'FR3483 BRINDISI - BGY' },
+                    { time: '17:55-19:35 UTC', route: 'FR5831 BGY - BORDEAUX' }
+                ]
+            }
+            // Add more flights here
+        ];
+
+        const flightInfoDiv = document.getElementById('flight-info');
+        flightInfoDiv.innerHTML = '';
+
+        flights.forEach(day => {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'flight-day';
+            const dayTitle = document.createElement('h2');
+            dayTitle.textContent = `${day.date} - Total flight time: ${day.totalFlightTime}`;
+            dayDiv.appendChild(dayTitle);
+
+            day.flights.forEach(flight => {
+                const flightDiv = document.createElement('div');
+                flightDiv.className = 'flight';
+                flightDiv.textContent = `${flight.time}: ${flight.route}`;
+                dayDiv.appendChild(flightDiv);
+            });
+
+            flightInfoDiv.appendChild(dayDiv);
+        });
     </script>
 </body>
 </html>
